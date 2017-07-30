@@ -31,10 +31,17 @@
     
     <ion-row class="group-container">
       <ion-col col-sm-12>
-    
-        <div *ngFor="let group of appService.groupNameList">
-          <div tappable (click)="moveToPlayArea(group)" 
-          class="group-content">{{group.name}}</div>
+        
+        <div *ngFor="let group of appService.groupNameList; let i = index">
+          <div tappable (click)="moveToPlayArea(group)" class="group-content">
+            
+            <div class="col-content full-height">
+              <div class="index-mark">{{i}}</div>
+              <div class="group-name">
+                {{group.name}}
+              </div>
+            </div>
+          </div>
         </div>
         
       </ion-col>

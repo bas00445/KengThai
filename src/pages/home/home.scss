@@ -8,8 +8,17 @@ page-home {
 }
 
 .group-content {
+    height: 50px;
     margin: 5px;
     margin-bottom: 5px;
     background: #ccc;
-}
 
+    .index-mark {
+        background: gray;
+        width: 30px;
+    }
+
+    .group-name {
+        width: 100%;
+    }
+}
