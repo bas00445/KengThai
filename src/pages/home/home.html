@@ -1,0 +1,47 @@
+<ion-header>
+  <ion-navbar>
+    <ion-title>Home</ion-title>
+  </ion-navbar>
+</ion-header>
+
+<ion-content padding>
+  
+  <ion-grid class="full-height">
+    <ion-row>
+      <ion-col col-sm-12>
+        <ion-item>
+          <ion-input class="center-x" type="text" placeholder="ชื่อของกลุ่มคำศัพท์" [(ngModel)]="groupName"></ion-input>
+        </ion-item>
+      </ion-col>
+    </ion-row>
+    
+    <ion-row>
+      <ion-col col-sm-12>
+        <ion-item>
+          <ion-input type="text" placeholder="พิมคำศัพท์ที่ต้องการ" [(ngModel)]="newSentence"></ion-input>
+        </ion-item>
+      </ion-col>
+    </ion-row>
+    
+    <ion-row>
+      <ion-col col-sm-12>
+        <button ion-button full (click)="addNewSentence()">เพิ่มชุดประโยค</button>
+      </ion-col>
+    </ion-row>
+    
+    <ion-row class="group-container">
+      <ion-col col-sm-12>
+    
+        <div *ngFor="let group of appService.groupNameList">
+          <div tappable (click)="moveToPlayArea(group)" 
+          class="group-content">{{group.name}}</div>
+        </div>
+        
+      </ion-col>
+    </ion-row>
+    
+    
+    
+  </ion-grid>
+  
+</ion-content>
