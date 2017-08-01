@@ -36,8 +36,11 @@
           <div tappable (click)="moveToPlayArea(group)" class="group-content">
             
             <div class="col-content full-height">
-              <div class="index-mark">{{i}}</div>
-              <div class="group-name">
+              <div class="full-height index-mark row-content">
+                <div class="center-x">{{i+1}}</div>
+              </div>
+          
+              <div class="group-name p-t-10 p-l-5">
                 {{group.name}}
               </div>
             </div>

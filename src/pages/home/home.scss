@@ -1,5 +1,4 @@
 page-home {
-
 }
 
 .group-container {
@@ -11,11 +10,14 @@ page-home {
     height: 50px;
     margin: 5px;
     margin-bottom: 5px;
-    background: #ccc;
+    background: #004080;
+    color:white;
+    font-size: 20px;
 
     .index-mark {
-        background: gray;
-        width: 30px;
+        background: #00ace6;
+        width: 40px;
+        font-weight: bold;
     }
 
     .group-name {
