@@ -9,12 +9,19 @@ import {AppService} from '../../services/app-service';
   templateUrl: 'play.html'
 })
 export class PlayPage {
+  
+  private groupName: string;
+  private sentences: any[];
+  private currentSentence: string;
+  private currentIndex: number = 0;
 
   constructor(public navCtrl: NavController,
     private tts: TextToSpeech,
-  private appService: AppService,
-private navParams: NavParams) {
-        console.log('Param:', navParams);
+    private appService: AppService,
+    private navParams: NavParams) {
+      this.groupName = navParams.data.name;
+      this.sentences = navParams.data.sentences;
+      this.currentSentence = this.sentences[this.currentIndex];
     }
     
     private speak(){ 
@@ -32,8 +39,8 @@ private navParams: NavParams) {
         (err) => {
           console.log(err);
         });
+        
+      }
       
     }
-
-  }
-  
+    

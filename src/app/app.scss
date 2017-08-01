@@ -21,11 +21,22 @@
     justify-content: center;
 }
 
+.text-bold {
+    font-weight: bold;
+}
+.text-center {
+    text-align: center;
+}
+.text-left {
+    text-align: left;
+}
+.text-right {
+    text-align: right;
+}
 
 $max: 500;
-
 @for $i from 0 to $max {
-
+    
     // Margin
     .m-#{$i} {
         margin: #{$i}px;
@@ -42,7 +53,7 @@ $max: 500;
     .m-b-#{$i} {
         margin-bottom: #{$i}px;
     }
-
+    
     // Padding
     .p-#{$i} {
         padding: #{$i}px;
@@ -60,6 +71,18 @@ $max: 500;
         padding-bottom: #{$i}px;
     }
     
-
+    // Font
+    .f-s-#{$i} {
+        font-size: #{$i}px;
+    }
+    
+    // Height and Width
+    .h-#{$i} {
+        height: #{$i}px;
+    }
+    .w-#{$i} {
+        width: #{$i}px;
+    }
+    
 }
 
