@@ -18,7 +18,7 @@ export class PlayPage {
   private currentSentence: string;
   private sentenceInput: string;
   private currentIndex: number = 0;
-  private timeLeft: number = 30;
+  private timeLeft: number = 20;
   private subscription: Subscription;
   private timer: any;
   private endGame: boolean = false;
@@ -40,6 +40,7 @@ export class PlayPage {
         t => {
           if (this.timeLeft <= 0) {
             this.pauseTime();
+            this.endGame = true;
           } else {
             this.timeLeft -= 1;
           }
