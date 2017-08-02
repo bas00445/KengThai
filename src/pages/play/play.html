@@ -6,10 +6,10 @@
 
 <ion-content padding>
   
-  <ion-grid>
+  <ion-grid *ngIf="!endGame">
     <ion-row>
       <ion-col col-sm-12 class="h-60 d-flex flex-center">
-        <div class="text-bold f-s-24">{{groupName}}</div>
+        <div class="text-bold text-italic f-s-28">{{groupName}}</div>
       </ion-col>
     </ion-row>
     
@@ -35,7 +35,20 @@
       </ion-col>
     </ion-row>
     
+  </ion-grid>
+  
+  <ion-grid *ngIf="endGame">
+    <ion-row>
+      <ion-col col-sm-12>
+        <div class="f-s-30 text-bold text-center">เกมจบแล้ว</div>
+      </ion-col>
+    </ion-row>
     
+    <ion-row>
+      <ion-col col-sm-12>
+        <button ion-button full (click)="moveToHome()" class="f-s-20">กลับไปที่หน้าแรก</button>
+      </ion-col>
+    </ion-row>
   </ion-grid>
   
 </ion-content>

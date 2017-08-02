@@ -21,6 +21,7 @@ export class PlayPage {
   private timeLeft: number = 30;
   private subscription: Subscription;
   private timer: any;
+  private endGame: boolean = false;
   
   constructor(public navCtrl: NavController,
     private tts: TextToSpeech,
@@ -30,11 +31,11 @@ export class PlayPage {
       this.sentences = navParams.data.sentences;
       this.currentSentence = this.sentences[this.currentIndex];
       
-      this.timer = Observable.timer(3000, 1000);
-      this.runTime();
+      this.runTime(3000);
     }
     
-    private runTime() {
+    private runTime(delay: number) {
+      this.timer = Observable.timer(delay, 1000);
       this.subscription = this.timer.subscribe(
         t => {
           if (this.timeLeft <= 0) {
@@ -58,6 +59,10 @@ export class PlayPage {
         this.speak(this.currentSentence);
       }
     }
+
+    private moveToHome(){
+      this.navCtrl.pop();
+    }
     
     private speak(word: string){ 
       let options: any = {
@@ -71,14 +76,24 @@ export class PlayPage {
           this.currentIndex += 1;
           this.currentSentence = this.sentences[this.currentIndex];
           this.sentenceInput = '';
-          this.runTime();
+          
+          if (this.currentSentence === undefined) {
+            this.endGame = true;
+          } else {
+            this.runTime(0);
+          }
         }
       ).catch( 
         (err) => {
           this.currentIndex += 1;
           this.currentSentence = this.sentences[this.currentIndex];
           this.sentenceInput = '';
-          this.runTime();
+          
+          if (this.currentSentence === undefined) {
+            this.endGame = true;
+          } else {
+            this.runTime(0);
+          }
         });
         
       }
