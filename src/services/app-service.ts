@@ -1,11 +1,15 @@
 import {Injectable} from '@angular/core';
 import * as _ from 'lodash';
-
+import {ToastController} from 'ionic-angular';
 
 @Injectable()
 export class AppService {
     
     public groupNameList: any = [];
+    
+    constructor(private toastCtrl: ToastController){
+
+    }
     
     public addNewGroup(gName: string, sentence: string) {
         if(this.isNewGroup(gName)){
@@ -27,6 +31,14 @@ export class AppService {
         }
         
         return true;
+    }
+    
+    public showToast(word: string) {
+        let toast = this.toastCtrl.create({
+            message: word,
+            duration: 3000
+        });
+        toast.present();
     }
     
 }

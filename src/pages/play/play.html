@@ -8,23 +8,30 @@
   
   <ion-grid>
     <ion-row>
-      <ion-col col-sm-12>
-        <h3 class="text-center text-bold f-s-24">{{groupName}}</h3>
+      <ion-col col-sm-12 class="h-60 d-flex flex-center">
+        <div class="text-bold f-s-24">{{groupName}}</div>
       </ion-col>
     </ion-row>
     
     <ion-row>
-      <ion-col col-sm-6>
+      <ion-col col-sm-6 class="h-60 d-flex flex-center">
         <div class="text-center f-s-22">เหลือเวลา</div>
       </ion-col>
       <ion-col col-sm-6>
-        <div class="text-center f-s-22">00.10</div>
+        <div class="text-center f-s-40">{{timeLeft}}</div>
       </ion-col>
     </ion-row>
-
+    
     <ion-row>
-      <ion-col col-sm-12>
-        <div class="text-center f-s-22">{{currentSentence}}</div>
+      <ion-col col-sm-12 class="h-60 d-flex flex-center">
+        <div class="text-center f-s-28">{{currentSentence}}</div>
+      </ion-col>
+    </ion-row>
+    
+    <ion-row>
+      <ion-col col-sm-12 class="h-80 d-flex flex-center">
+        <ion-input class="f-s-25" type="text" placeholder="ใส่คำตอบ" 
+        [(ngModel)]="sentenceInput" (keyup)="validateInput($event)"></ion-input>
       </ion-col>
     </ion-row>
     

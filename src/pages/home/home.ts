@@ -21,6 +21,7 @@ export class HomePage {
     
     private addNewSentence(){
       this.appService.addNewGroup(this.groupName, this.newSentence);
+      this.appService.showToast("'" + this.newSentence + "'" + ' ได้ถูกเพิ่มเรียบร้อย');
     }
     
     private moveToPlayArea(group: any){

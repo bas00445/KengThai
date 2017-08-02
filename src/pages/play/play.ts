@@ -1,8 +1,11 @@
 import { Component } from '@angular/core';
 import { NavController, NavParams } from 'ionic-angular';
-import {TextToSpeech} from '@ionic-native/text-to-speech';
 
+// Add-ons
+import {TextToSpeech} from '@ionic-native/text-to-speech';
 import {AppService} from '../../services/app-service';
+import {Observable} from 'rxjs/Rx';
+import {Subscription} from "rxjs";
 
 @Component({
   selector: 'page-play',
@@ -13,8 +16,12 @@ export class PlayPage {
   private groupName: string;
   private sentences: any[];
   private currentSentence: string;
+  private sentenceInput: string;
   private currentIndex: number = 0;
-
+  private timeLeft: number = 30;
+  private subscription: Subscription;
+  private timer: any;
+  
   constructor(public navCtrl: NavController,
     private tts: TextToSpeech,
     private appService: AppService,
@@ -22,22 +29,56 @@ export class PlayPage {
       this.groupName = navParams.data.name;
       this.sentences = navParams.data.sentences;
       this.currentSentence = this.sentences[this.currentIndex];
+      
+      this.timer = Observable.timer(3000, 1000);
+      this.runTime();
     }
     
-    private speak(){ 
+    private runTime() {
+      this.subscription = this.timer.subscribe(
+        t => {
+          if (this.timeLeft <= 0) {
+            this.pauseTime();
+          } else {
+            this.timeLeft -= 1;
+          }
+        }
+      )
+    }
+    
+    private pauseTime() {
+      this.subscription.unsubscribe();
+    }
+    
+    private validateInput(event:any){
+      if (this.sentenceInput === this.currentSentence) {
+        this.appService.showToast('ถูกต้อง');
+        this.timeLeft += 10;
+        this.pauseTime();
+        this.speak(this.currentSentence);
+      }
+    }
+    
+    private speak(word: string){ 
       let options: any = {
-        text: 'สวัสดี',
+        text: word,
         locale: "th-TH",
         rate: 1
       }
       
       this.tts.speak(options).then(
         (res) => {
-          console.log(res);
+          this.currentIndex += 1;
+          this.currentSentence = this.sentences[this.currentIndex];
+          this.sentenceInput = '';
+          this.runTime();
         }
       ).catch( 
         (err) => {
-          console.log(err);
+          this.currentIndex += 1;
+          this.currentSentence = this.sentences[this.currentIndex];
+          this.sentenceInput = '';
+          this.runTime();
         });
         
       }
