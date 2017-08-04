@@ -5,10 +5,14 @@ import {ToastController} from 'ionic-angular';
 @Injectable()
 export class AppService {
     
-    public groupNameList: any = [];
+    public groupNameList: any = [
+        {name: 'ของใช้ทั่วไป',
+        sentences: ['หนังสือ','สมุด','ปากกา','ดินสอ', 'ยางลบ', 'กระดาษ', 'ไม้บรรทัด']},
+        {name: 'สี',
+        sentences: ['สีแดง','สีฟ้า', 'สีม่วง', 'สีส้ม', 'สีเหลือง', 'สีเขียว', 'สีดำ', 'สีชมพู', 'สีทอง', 'สีขาว']}];
     
     constructor(private toastCtrl: ToastController){
-
+        
     }
     
     public addNewGroup(gName: string, sentence: string) {
