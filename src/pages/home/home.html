@@ -8,13 +8,12 @@
   <ion-grid class="page-container p-4">
     <ion-row>
       <ion-col col-sm-12>
-        <ion-input class="center-x f-s-20" type="text" placeholder="ใส่ชื่อของกลุ่มคำศัพท์" [(ngModel)]="groupName"></ion-input>
-      </ion-col>
-    </ion-row>
-    
-    <ion-row>
-      <ion-col col-sm-12>
-        <ion-input class="center-x f-s-20" type="text" placeholder="ใส่คำศัพท์ที่ต้องการ" [(ngModel)]="newSentence"></ion-input>
+        <form>
+          <ion-input class="center-x f-s-20 m-b-5" type="text" name="groupName"
+                     placeholder="ใส่ชื่อของกลุ่มคำศัพท์" [(ngModel)]="groupName"></ion-input>
+          <ion-input class="center-x f-s-20" type="text" name="newSentence"
+                     placeholder="ใส่คำศัพท์ที่ต้องการ" [(ngModel)]="newSentence"></ion-input>
+        </form>
       </ion-col>
     </ion-row>
     
