@@ -98,6 +98,10 @@ $max: 500;
         width: percentage($i) !important;
     }
     
+    // Border
+    .border-r-#{$i} {
+        border-radius: #{$i}px !important;
+    }
 }
 
 ion-input {

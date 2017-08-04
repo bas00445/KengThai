@@ -14,6 +14,7 @@ page-home {
         background: #a95151;
         color:white;
         font-size: 20px;
+        border-radius: 6px;
         
         .index-mark {
             background: #ef3f3f;
@@ -28,6 +29,7 @@ page-home {
     
     .add-btn {
         background: #ff6666;
+        border-radius: 6px;
     }
     
     @keyframes fadeInLeft {
