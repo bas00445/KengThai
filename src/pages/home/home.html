@@ -9,17 +9,13 @@
   <ion-grid class="page-container p-4">
     <ion-row>
       <ion-col col-sm-12>
-        <ion-item class="p-l-0">
-          <ion-input class="center-x f-s-20" type="text" placeholder="ใส่ชื่อของกลุ่มคำศัพท์" [(ngModel)]="groupName"></ion-input>
-        </ion-item>
+        <ion-input class="center-x f-s-20" type="text" placeholder="ใส่ชื่อของกลุ่มคำศัพท์" [(ngModel)]="groupName"></ion-input>
       </ion-col>
     </ion-row>
     
     <ion-row>
       <ion-col col-sm-12>
-        <ion-item class="p-l-0">
-          <ion-input class="center-x f-s-20" type="text" placeholder="ใส่คำศัพท์ที่ต้องการ" [(ngModel)]="newSentence"></ion-input>
-        </ion-item>
+        <ion-input class="center-x f-s-20" type="text" placeholder="ใส่คำศัพท์ที่ต้องการ" [(ngModel)]="newSentence"></ion-input>
       </ion-col>
     </ion-row>
     
@@ -33,13 +29,13 @@
       <ion-col col-sm-12>
         
         <div *ngFor="let group of appService.groupNameList; let i = index">
-          <div tappable (click)="moveToPlayArea(group)" class="group-content">
+          <div tappable (click)="moveToPlayArea(group)" class="group-content fade-in-anim">
             
             <div class="col-content full-height">
               <div class="full-height index-mark row-content">
                 <div class="center-x">{{i+1}}</div>
               </div>
-          
+              
               <div class="group-name p-t-10 p-l-5">
                 {{group.name}}
               </div>
