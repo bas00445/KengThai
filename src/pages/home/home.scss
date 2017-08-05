@@ -3,10 +3,6 @@ page-home {
         background: #ff9999;
     }
     
-    .group-container {
-        overflow-y: scroll;
-    }
-    
     .group-content {
         height: 50px;
         margin: 5px;
@@ -25,11 +21,6 @@ page-home {
         .group-name {
             width: 100%;
         }
-    }
-    
-    .add-btn {
-        background: #ff6666;
-        border-radius: 6px;
     }
     
     @keyframes fadeInLeft {

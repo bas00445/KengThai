@@ -9,7 +9,7 @@
   <ion-grid *ngIf="!endGame" class="page-container">
     <ion-row>
       <ion-col col-sm-12 class="h-60 d-flex flex-center">
-        <div class="text-bold text-italic f-s-28">{{groupName}}</div>
+        <div class="text-bold f-s-28">{{groupName}}</div>
       </ion-col>
     </ion-row>
     
@@ -46,7 +46,8 @@
     
     <ion-row>
       <ion-col col-sm-12>
-        <button ion-button full (click)="moveToHome()" class="f-s-20">กลับไปที่หน้าแรก</button>
+        <button ion-button full (click)="moveToHome()" 
+        class="f-s-20 primary-btn">กลับไปที่หน้าแรก</button>
       </ion-col>
     </ion-row>
   </ion-grid>
