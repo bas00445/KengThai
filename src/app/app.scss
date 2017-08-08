@@ -102,6 +102,11 @@ $max: 500;
     .border-r-#{$i} {
         border-radius: #{$i}px !important;
     }
+
+    // Flex
+    .flex-#{$i} {
+        flex: #{$i} !important;
+    }
 }
 
 ion-input {

@@ -2,5 +2,27 @@ page-play {
     .page-container {
         height: 100%;
         background: #ff9999;
+        color: #a95151;
     }
+    
+    .group-content {
+        height: 50px;
+        margin: 5px;
+        margin-bottom: 5px;
+        background: #a95151;
+        color:white;
+        border-radius: 6px;
+        
+        .index-mark {
+            background: #ef3f3f;
+            width: 10px;
+            font-weight: bold;
+        }
+        
+        .group-name {
+            width: 100%;
+            font-size: 28px;
+        }
+    }
+    
 }

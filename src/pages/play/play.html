@@ -8,8 +8,17 @@
   
   <ion-grid *ngIf="!endGame" class="page-container">
     <ion-row>
-      <ion-col col-sm-12 class="h-60 d-flex flex-center">
-        <div class="text-bold f-s-28">{{groupName}}</div>
+      <ion-col col-sm-12 class="h-60">
+        <div class="col-content full-height group-content">
+          <div class="full-height index-mark row-content">
+          </div>
+          
+          <div class="row-content flex-center full-width">
+            <div class="group-name p-l-5 p-r-5">
+              <div class="text-center">{{groupName}}</div>
+            </div>
+          </div>
+        </div>
       </ion-col>
     </ion-row>
     
