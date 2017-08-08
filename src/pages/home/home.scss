@@ -1,26 +1,42 @@
 page-home {
-}
-
-.group-container {
-    height: 70%;
-    overflow-y: scroll;
-}
-
-.group-content {
-    height: 50px;
-    margin: 5px;
-    margin-bottom: 5px;
-    background: #004080;
-    color:white;
-    font-size: 20px;
-
-    .index-mark {
-        background: #00ace6;
-        width: 40px;
-        font-weight: bold;
+    .page-container {
+        background: #ff9999;
     }
-
-    .group-name {
-        width: 100%;
+    
+    .group-content {
+        height: 50px;
+        margin: 5px;
+        margin-bottom: 5px;
+        background: #a95151;
+        color:white;
+        font-size: 20px;
+        border-radius: 6px;
+        
+        .index-mark {
+            background: #ef3f3f;
+            width: 40px;
+            font-weight: bold;
+        }
+        
+        .group-name {
+            width: 100%;
+        }
     }
+    
+    @keyframes fadeInLeft {
+        from{
+            opacity: 0;
+            transform: translateX(-40px);
+        }
+        to {
+            opacity: 1;
+            transform: translateX(0);
+        }
+    }
+    .fade-in-anim {
+        animation: fadeInLeft 1s;
+        animation-fill-mode: forwards;
+    }
+    
 }
+

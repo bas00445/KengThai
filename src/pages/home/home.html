@@ -5,27 +5,22 @@
 </ion-header>
 
 <ion-content padding>
-  
-  <ion-grid class="full-height">
+  <ion-grid class="page-container p-4">
     <ion-row>
       <ion-col col-sm-12>
-        <ion-item class="p-l-0">
-          <ion-input class="center-x f-s-20" type="text" placeholder="ใส่ชื่อของกลุ่มคำศัพท์" [(ngModel)]="groupName"></ion-input>
-        </ion-item>
+        <form>
+          <ion-input class="center-x f-s-20 m-b-5" type="text" name="groupName"
+                     placeholder="ใส่ชื่อของกลุ่มคำศัพท์" [(ngModel)]="groupName"></ion-input>
+          <ion-input class="center-x f-s-20" type="text" name="newSentence"
+                     placeholder="ใส่คำศัพท์ที่ต้องการ" [(ngModel)]="newSentence"></ion-input>
+        </form>
       </ion-col>
     </ion-row>
     
     <ion-row>
       <ion-col col-sm-12>
-        <ion-item class="p-l-0">
-          <ion-input class="center-x f-s-20" type="text" placeholder="ใส่คำศัพท์ที่ต้องการ" [(ngModel)]="newSentence"></ion-input>
-        </ion-item>
-      </ion-col>
-    </ion-row>
-    
-    <ion-row>
-      <ion-col col-sm-12>
-        <button ion-button full (click)="addNewSentence()" class="f-s-20">เพิ่มชุดประโยค</button>
+        <button class="border-r-6" ion-button full (click)="addNewSentence()" 
+        class="f-s-20 primary-btn">เพิ่มชุดประโยค</button>
       </ion-col>
     </ion-row>
     
@@ -33,15 +28,17 @@
       <ion-col col-sm-12>
         
         <div *ngFor="let group of appService.groupNameList; let i = index">
-          <div tappable (click)="moveToPlayArea(group)" class="group-content">
-            
+          <div tappable (click)="moveToPlayArea(group)" class="group-content fade-in-anim">
+      
             <div class="col-content full-height">
               <div class="full-height index-mark row-content">
                 <div class="center-x">{{i+1}}</div>
               </div>
-          
-              <div class="group-name p-t-10 p-l-5">
-                {{group.name}}
+              
+              <div class="row-content flex-center">
+                <div class="group-name p-l-5 p-r-5">
+                  {{group.name}}
+                </div>
               </div>
             </div>
           </div>
@@ -49,8 +46,6 @@
         
       </ion-col>
     </ion-row>
-    
-    
     
   </ion-grid>
   

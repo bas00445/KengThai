@@ -14,6 +14,7 @@ import { SplashScreen } from '@ionic-native/splash-screen';
 
 // Native Modules //
 import {TextToSpeech} from '@ionic-native/text-to-speech';
+import { Keyboard } from '@ionic-native/keyboard';
 
 // Common Module //
 import {AppService} from '../services/app-service';
@@ -29,7 +30,11 @@ import {AppService} from '../services/app-service';
   ],
   imports: [
     BrowserModule,
-    IonicModule.forRoot(MyApp)
+    IonicModule.forRoot(MyApp, {
+            scrollPadding: false,
+            scrollAssist: true,
+            autoFocusAssist: false
+        })
   ],
   bootstrap: [IonicApp],
   entryComponents: [
@@ -44,6 +49,7 @@ import {AppService} from '../services/app-service';
     StatusBar,
     SplashScreen,
     TextToSpeech,
+    Keyboard,
     AppService,
     {provide: ErrorHandler, useClass: IonicErrorHandler}
   ]

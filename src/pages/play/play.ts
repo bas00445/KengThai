@@ -42,7 +42,7 @@ export class PlayPage {
             this.pauseTime();
             this.endGame = true;
           } else {
-            this.timeLeft -= 1;
+            // this.timeLeft -= 1;
           }
         }
       )
