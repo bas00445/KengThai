@@ -15,7 +15,7 @@
           
           <div class="row-content flex-center full-width">
             <div class="group-name p-l-5 p-r-5">
-              <div class="text-center">{{groupName}}</div>
+              <div class="text-center"s>{{groupName}}</div>
             </div>
           </div>
         </div>
@@ -33,10 +33,9 @@
     
     <ion-row>
       <ion-col col-sm-12 class="h-60 d-flex flex-center">
-        <div class="text-center f-s-28">{{currentSentence}}</div>
+        <div class="text-center text-bold f-s-28" [ngClass]="{'scale-up-anim': isCorrect}">{{currentSentence}}</div>
       </ion-col>
-    </ion-row>
-    
+    </ion-row>    
     <ion-row>
       <ion-col col-sm-12 class="h-80 d-flex flex-center">
         <ion-input class="f-s-25" type="text" placeholder="ใส่คำตอบ" 

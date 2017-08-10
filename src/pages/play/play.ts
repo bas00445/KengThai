@@ -16,12 +16,13 @@ export class PlayPage {
   private groupName: string;
   private sentences: any[];
   private currentSentence: string;
-  private sentenceInput: string;
+  private sentenceInput: any;
   private currentIndex: number = 0;
-  private timeLeft: number = 20;
+  private timeLeft: number = 15;
   private subscription: Subscription;
   private timer: any;
   private endGame: boolean = false;
+  private isCorrect:boolean = false;
   
   constructor(public navCtrl: NavController,
     private tts: TextToSpeech,
@@ -30,8 +31,7 @@ export class PlayPage {
       this.groupName = navParams.data.name;
       this.sentences = navParams.data.sentences;
       this.currentSentence = this.sentences[this.currentIndex];
-      
-      this.runTime(3000);
+      this.runTime(1500);
     }
     
     private runTime(delay: number) {
@@ -42,10 +42,10 @@ export class PlayPage {
             this.pauseTime();
             this.endGame = true;
           } else {
-            // this.timeLeft -= 1;
+            this.timeLeft -= 1;
           }
         }
-      )
+      );
     }
     
     private pauseTime() {
@@ -55,9 +55,15 @@ export class PlayPage {
     private validateInput(event:any){
       if (this.sentenceInput === this.currentSentence) {
         this.appService.showToast('ถูกต้อง');
-        this.timeLeft += 10;
+        this.timeLeft += 5;
+        this.isCorrect = true;
         this.pauseTime();
         this.speak(this.currentSentence);
+
+        // Delay animation for 1 second
+        setTimeout(()=> {
+          this.isCorrect = false;
+        }, 1000);
       }
     }
 
@@ -78,6 +84,7 @@ export class PlayPage {
           this.currentSentence = this.sentences[this.currentIndex];
           this.sentenceInput = '';
           
+
           if (this.currentSentence === undefined) {
             this.endGame = true;
           } else {
@@ -90,6 +97,7 @@ export class PlayPage {
           this.currentSentence = this.sentences[this.currentIndex];
           this.sentenceInput = '';
           
+
           if (this.currentSentence === undefined) {
             this.endGame = true;
           } else {
