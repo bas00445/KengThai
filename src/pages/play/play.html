@@ -7,7 +7,7 @@
 <ion-content padding>
   
   <ion-grid *ngIf="!endGame" class="page-container">
-    <ion-row>
+    <ion-row class="m-b-5">
       <ion-col col-sm-12 class="h-60">
         <div class="d-flex flex-center group-content">
           <div class="row-content flex-center full-width">
@@ -29,7 +29,7 @@
     </ion-row>
     
     <ion-row>
-      <ion-col col-sm-12 class="d-flex flex-center">
+      <ion-col col-sm-12 class="min-h-60 d-flex flex-center">
         <p class="text-center text-bold f-s-28" [ngClass]="{'scale-up-anim': isCorrect}">{{currentSentence}}</p>
       </ion-col>
     </ion-row>    
