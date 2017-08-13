@@ -36,14 +36,8 @@
     <ion-row>
       <ion-col col-sm-12 class="h-80 d-flex flex-center">
         <ion-input class="f-s-25" type="text" placeholder="ใส่คำตอบ" 
-        #answerInput (keyup)="validateInput($event, answerInput)" [(ngModel)]="sentenceInput"></ion-input>
+        (keyup)="validateInput($event)" [(ngModel)]="sentenceInput"></ion-input>
         
-      </ion-col>
-    </ion-row>
-
-    <ion-row>
-      <ion-col col-sm-12>
-        <button ion-button full (click)="focusInput(answerInput)">โฟกัส</button>
       </ion-col>
     </ion-row>
     

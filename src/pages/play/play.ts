@@ -14,8 +14,8 @@ import {Subscription} from "rxjs";
   templateUrl: 'play.html'
 })
 export class PlayPage {
-
-  @ViewChild('answerInput') answerInput ;
+  
+  @ViewChild('answerInput') myInput;
   
   private groupName: string;
   private sentences: any[];
@@ -39,93 +39,86 @@ export class PlayPage {
       this.currentSentence = this.sentences[this.currentIndex];
       
       // Can't run on browser
-      // platform.ready().then(
-      //   () => {
-      //     this.nativeAudio.preloadSimple('correctSound', 'assets/sounds/correctAnswer.mp3').then(()=>{});
-      //   }
-      // );
-      this.runTime(1500);
-    }
-    
-    private runTime(delay: number) {
-      this.timer = Observable.timer(delay, 1000);
-      this.subscription = this.timer.subscribe(
-        t => {
-          if (this.timeLeft <= 0) {
+      platform.ready().then(
+          () => {
+              this.nativeAudio.preloadSimple('correctSound', 'assets/sounds/correctAnswer.mp3').then(()=>{});
+            }
+          );
+          this.runTime(1500);
+        }
+        
+        private runTime(delay: number) {
+          this.timer = Observable.timer(delay, 1000);
+          this.subscription = this.timer.subscribe(
+            t => {
+              if (this.timeLeft <= 0) {
+                this.pauseTime();
+                this.endGame = true;
+              } else {
+                this.timeLeft -= 1;
+              }
+            }
+          );
+        }
+        
+        private pauseTime() {
+          this.subscription.unsubscribe();
+        }
+        
+        private validateInput(event, answerInput){
+          if (this.sentenceInput === this.currentSentence) {
+            this.nativeAudio.play('correctSound');
+            this.timeLeft += 5;
+            this.isCorrect = true;
             this.pauseTime();
-            this.endGame = true;
-          } else {
-            this.timeLeft -= 1;
+            this.speak(this.currentSentence);
+            
+            
+            // Delay animation for 1 second
+            setTimeout(()=> {
+              this.isCorrect = false;
+            }, 1000);
           }
         }
-      );
-    }
-    
-    private pauseTime() {
-      this.subscription.unsubscribe();
-    }
-    
-    private validateInput(event){
-      if (this.sentenceInput === this.currentSentence) {
-        // this.nativeAudio.play('correctSound');
-        this.appService.showToast('ถูกต้อง');
-        this.timeLeft += 5;
-        this.isCorrect = true;
-        this.pauseTime();
-        this.speak(this.currentSentence);
         
+        private moveToHome(){
+          this.navCtrl.pop();
+        }
         
-        // Delay animation for 1 second
-        setTimeout(()=> {
-          this.isCorrect = false;
-        }, 1000);
-      }
-    }
-    
-    private moveToHome(){
-      this.navCtrl.pop();
-    }
-
-    private focusInput(answerInput) {
-      console.log('Type:', answerInput);
-      answerInput.setFocus();
-    }
-    
-    private speak(word: string){ 
-      let options: any = {
-        text: word,
-        locale: "th-TH",
-        rate: 1
-      }
-      
-      this.tts.speak(options).then(
-        (res) => {
-          this.currentIndex += 1;
-          this.currentSentence = this.sentences[this.currentIndex];
-          this.sentenceInput = '';
-          this.answerInput.setFocus();
+        private speak(word: string){ 
+          let options: any = {
+            text: word,
+            locale: "th-TH",
+            rate: 1
+          }
           
-          if (this.currentSentence === undefined) {
-            this.endGame = true;
-          } else {
-            this.runTime(0);
+          this.tts.speak(options).then(
+            (res) => {
+              this.currentIndex += 1;
+              this.currentSentence = this.sentences[this.currentIndex];
+              this.sentenceInput = '';
+              
+              if (this.currentSentence === undefined) {
+                this.endGame = true;
+              } else {
+                this.runTime(0);
+              }
+            }
+          ).catch( 
+            (err) => {
+              this.currentIndex += 1;
+              this.currentSentence = this.sentences[this.currentIndex];
+              this.sentenceInput = '';
+              
+              if (this.currentSentence === undefined) {
+                this.endGame = true;
+              } else {
+                this.runTime(0);
+              }
+            });
+            
           }
+          
+          
         }
-      ).catch( 
-        (err) => {
-          this.currentIndex += 1;
-          this.currentSentence = this.sentences[this.currentIndex];
-          this.sentenceInput = '';
-          this.answerInput.setFocus();
-                    
-          if (this.currentSentence === undefined) {
-            this.endGame = true;
-          } else {
-            this.runTime(0);
-          }
-        });
         
-      }
-      
-    }
-    
