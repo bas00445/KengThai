@@ -21,15 +21,15 @@ export class HomePage {
     private appService: AppService,
     private nativeAudio: NativeAudio,
     private platform: Platform) {
-      platform.ready().then(
-        () => {
-          this.nativeAudio.preloadComplex('background-music', 'assets/sounds/bubbleSound.mp3', 1, 1, 0).then(
-            () => {
-              this.nativeAudio.loop('background-music').then(()=> {});
-            }
-          );
-        }
-      );
+      // platform.ready().then(
+      //   () => {
+      //     this.nativeAudio.preloadComplex('background-music', 'assets/sounds/bubbleSound.mp3', 1, 1, 0).then(
+      //       () => {
+      //         this.nativeAudio.loop('background-music').then(()=> {});
+      //       }
+      //     );
+      //   }
+      // );
     }
     
     private addNewSentence(){
@@ -38,7 +38,6 @@ export class HomePage {
     }
     
     private moveToPlayArea(group: any){
-      console.log('Move to group:', group);
       this.navCtrl.push(PlayPage, group);
     }
   }

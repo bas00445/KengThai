@@ -39,11 +39,11 @@ export class PlayPage {
       this.currentSentence = this.sentences[this.currentIndex];
       
       // Can't run on browser
-      platform.ready().then(
-          () => {
-              this.nativeAudio.preloadSimple('correctSound', 'assets/sounds/correctAnswer.mp3').then(()=>{});
-            }
-          );
+      // platform.ready().then(
+        //   () => {
+          //     this.nativeAudio.preloadSimple('correctSound', 'assets/sounds/correctAnswer.mp3').then(()=>{});
+          //   }
+          // );
           this.runTime(1500);
         }
         
@@ -67,7 +67,7 @@ export class PlayPage {
         
         private validateInput(event, answerInput){
           if (this.sentenceInput === this.currentSentence) {
-            this.nativeAudio.play('correctSound');
+            // this.nativeAudio.play('correctSound');
             this.timeLeft += 5;
             this.isCorrect = true;
             this.pauseTime();
