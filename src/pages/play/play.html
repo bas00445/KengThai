@@ -43,10 +43,25 @@
     
   </ion-grid>
   
-  <ion-grid *ngIf="endGame">
+  <ion-grid *ngIf="endGame" class="page-container">
+    <ion-row class="m-b-5">
+      <ion-col col-sm-12 class="h-60">
+        <div class="d-flex flex-center group-content">
+          <div class="row-content flex-center full-width">
+            <div class="group-name p-l-5 p-r-5">
+              <div class="text-center"s>เกมจบแล้ว</div>
+            </div>
+          </div>
+        </div>
+      </ion-col>
+    </ion-row>
+
     <ion-row>
-      <ion-col col-sm-12>
-        <div class="f-s-30 text-bold text-center">เกมจบแล้ว</div>
+      <ion-col col-sm-6 class="h-60 d-flex flex-center">
+        <div class="text-center f-s-22">คะแนนที่ได้</div>
+      </ion-col>
+      <ion-col col-sm-6>
+        <div class="text-center f-s-40">{{timeLeft*1000}}</div>
       </ion-col>
     </ion-row>
     

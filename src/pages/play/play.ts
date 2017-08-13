@@ -99,6 +99,7 @@ export class PlayPage {
               this.sentenceInput = '';
               
               if (this.currentSentence === undefined) {
+                this.pauseTime();                
                 this.endGame = true;
               } else {
                 this.runTime(0);
@@ -111,6 +112,7 @@ export class PlayPage {
               this.sentenceInput = '';
               
               if (this.currentSentence === undefined) {
+                this.pauseTime();
                 this.endGame = true;
               } else {
                 this.runTime(0);
