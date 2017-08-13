@@ -40,7 +40,8 @@ export class AppService {
     public showToast(word: string) {
         let toast = this.toastCtrl.create({
             message: word,
-            duration: 3000
+            duration: 3000,
+            position: 'top'
         });
         toast.present();
     }

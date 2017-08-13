@@ -90,6 +90,9 @@ $max: 500;
     .h-percent-#{$i} {
         height: percentage($i) !important;
     }
+    .min-h-#{$i} {
+        min-height: #{$i}px !important;
+    }       
     
     .w-#{$i} {
         width: #{$i}px !important;
@@ -97,6 +100,9 @@ $max: 500;
     .w-percent-#{$i} {
         width: percentage($i) !important;
     }
+    .min-w-#{$i} {
+        min-width: #{$i}px !important;
+    }      
     
     // Border
     .border-r-#{$i} {

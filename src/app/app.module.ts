@@ -14,7 +14,7 @@ import { SplashScreen } from '@ionic-native/splash-screen';
 
 // Native Modules //
 import {TextToSpeech} from '@ionic-native/text-to-speech';
-import { Keyboard } from '@ionic-native/keyboard';
+import { NativeAudio } from '@ionic-native/native-audio';
 
 // Common Module //
 import {AppService} from '../services/app-service';
@@ -49,7 +49,7 @@ import {AppService} from '../services/app-service';
     StatusBar,
     SplashScreen,
     TextToSpeech,
-    Keyboard,
+    NativeAudio,
     AppService,
     {provide: ErrorHandler, useClass: IonicErrorHandler}
   ]

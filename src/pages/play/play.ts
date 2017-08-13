@@ -1,8 +1,10 @@
-import { Component } from '@angular/core';
+import { Component, ViewChild } from '@angular/core';
 import { NavController, NavParams } from 'ionic-angular';
+import { Platform } from 'ionic-angular';
 
 // Add-ons
 import {TextToSpeech} from '@ionic-native/text-to-speech';
+import { NativeAudio } from '@ionic-native/native-audio';
 import {AppService} from '../../services/app-service';
 import {Observable} from 'rxjs/Rx';
 import {Subscription} from "rxjs";
@@ -12,6 +14,8 @@ import {Subscription} from "rxjs";
   templateUrl: 'play.html'
 })
 export class PlayPage {
+
+  @ViewChild('answerInput') answerInput ;
   
   private groupName: string;
   private sentences: any[];
@@ -27,10 +31,19 @@ export class PlayPage {
   constructor(public navCtrl: NavController,
     private tts: TextToSpeech,
     private appService: AppService,
-    private navParams: NavParams) {
+    private navParams: NavParams,
+    private nativeAudio: NativeAudio,
+    private platform: Platform) {
       this.groupName = navParams.data.name;
       this.sentences = navParams.data.sentences;
       this.currentSentence = this.sentences[this.currentIndex];
+      
+      // Can't run on browser
+      // platform.ready().then(
+      //   () => {
+      //     this.nativeAudio.preloadSimple('correctSound', 'assets/sounds/correctAnswer.mp3').then(()=>{});
+      //   }
+      // );
       this.runTime(1500);
     }
     
@@ -52,23 +65,30 @@ export class PlayPage {
       this.subscription.unsubscribe();
     }
     
-    private validateInput(event:any){
+    private validateInput(event){
       if (this.sentenceInput === this.currentSentence) {
+        // this.nativeAudio.play('correctSound');
         this.appService.showToast('ถูกต้อง');
         this.timeLeft += 5;
         this.isCorrect = true;
         this.pauseTime();
         this.speak(this.currentSentence);
-
+        
+        
         // Delay animation for 1 second
         setTimeout(()=> {
           this.isCorrect = false;
         }, 1000);
       }
     }
-
+    
     private moveToHome(){
       this.navCtrl.pop();
+    }
+
+    private focusInput(answerInput) {
+      console.log('Type:', answerInput);
+      answerInput.setFocus();
     }
     
     private speak(word: string){ 
@@ -83,8 +103,8 @@ export class PlayPage {
           this.currentIndex += 1;
           this.currentSentence = this.sentences[this.currentIndex];
           this.sentenceInput = '';
+          this.answerInput.setFocus();
           
-
           if (this.currentSentence === undefined) {
             this.endGame = true;
           } else {
@@ -96,8 +116,8 @@ export class PlayPage {
           this.currentIndex += 1;
           this.currentSentence = this.sentences[this.currentIndex];
           this.sentenceInput = '';
-          
-
+          this.answerInput.setFocus();
+                    
           if (this.currentSentence === undefined) {
             this.endGame = true;
           } else {
